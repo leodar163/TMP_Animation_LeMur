@@ -1,6 +1,6 @@
 {
   "name": "com.lemur.tmp_animation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "TextMeshPro Animations",
   "description": "Quelques fonctions et classes pour animer des TextMeshProUGUI",
   "unity" : "2020.3",
