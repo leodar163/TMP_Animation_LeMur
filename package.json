@@ -1,0 +1,16 @@
+{
+  "name": "com.lemur.tmp_animation",
+  "version": "1.0.0",
+  "displayName": "TextMeshPro Animations",
+  "description": "Quelques fonctions et classes pour animer des TextMeshProUGUI",
+  "unity" : "2020.3",
+  "dependencies": {  
+    "com.unity.textmeshpro" : "3.0.6"
+  },
+  "keywords": ["TMP","TextMeshPro","Animation","text","feedback"],
+  "author": {
+    "name": "LeMur",
+    "email": "leobgely@gmail.com",
+    "url":"https://leodar.itch.io/"
+  }
+}
