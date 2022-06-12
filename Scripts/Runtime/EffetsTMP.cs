@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace TMP_Animation
 {
-    public class EffetsTMP
+    public static class EffetsTMP
     {
         #region Effacement
         /// <summary>
@@ -86,6 +86,7 @@ namespace TMP_Animation
         /// <param name="texte">La référence au texte auquel on va appliquer la couleur</param>
         public static void ColorerMot(Color32 couleur, int indexMot, TextMeshProUGUI texte)
         {
+            
             TMP_WordInfo infos = texte.textInfo.wordInfo[indexMot];
             for (int i = 0; i < infos.characterCount; i++)
             {
@@ -101,6 +102,7 @@ namespace TMP_Animation
         /// <param name="texte">La référence au texte auquel on va appliquer la couleur</param>
         public static void ColorerCar(Color32 couleur, int indexCar, TextMeshProUGUI texte)
         {
+            
             int indexMesh = texte.textInfo.characterInfo[indexCar].materialReferenceIndex;
             int vertexIndex = texte.textInfo.characterInfo[indexCar].vertexIndex;
         
@@ -129,6 +131,7 @@ namespace TMP_Animation
         /// <param name="texte">La référence au texte auquel on va appliquer le saute</param>
         public static void SauteDeCouleur(Color32 couleurSaute, float duree, TextMeshProUGUI texte)
         {
+            //texte.ForceMeshUpdate();
             for (int i = 0; i < texte.textInfo.wordCount; i++)
             {
                 AttaqueDeCouleurSurMot(couleurSaute, i, duree, texte);
@@ -144,6 +147,7 @@ namespace TMP_Animation
         /// <param name="texte">La référence au texte auquel on va appliquer le saute</param>
         public static void AttaqueDeCouleurSurMot(Color32 couleurSaute, int indexMot, float duree, TextMeshProUGUI texte)
         {
+            //texte.ForceMeshUpdate();
             TMP_WordInfo info = texte.textInfo.wordInfo[indexMot];
 
             for (int i = 0; i < info.characterCount; i++)
@@ -160,6 +164,7 @@ namespace TMP_Animation
         /// <param name="texte">La référence au texte auquel on va appliquer le saute</param>
         public static void AttaqueDeCouleurSurCar(Color32 couleurSaute, int indexCar, float duree, TextMeshProUGUI texte)
         {
+            //texte.ForceMeshUpdate();
             int indexMesh = texte.textInfo.characterInfo[indexCar].materialReferenceIndex;
             int vertexIndex = texte.textInfo.characterInfo[indexCar].vertexIndex;
             Color32[] couleursVertex = texte.textInfo.meshInfo[indexMesh].colors32;
@@ -170,6 +175,7 @@ namespace TMP_Animation
     
         private static IEnumerator ColorerCar(Color32 couleur, Color32 couleurDepart,Color32[] vertexColors, int vertexIndex,float duree, TextMeshProUGUI texte)
         {
+            //texte.ForceMeshUpdate();
             vertexColors[vertexIndex + 0] = couleur;
             vertexColors[vertexIndex + 1] = couleur;
             vertexColors[vertexIndex + 2] = couleur;
@@ -203,6 +209,7 @@ namespace TMP_Animation
         /// <param name="texte">Référence au TexteMeshPro dont on va modifier le texte</param>
         public static void FaireTremblerTexte(float duree, float force, TextMeshProUGUI texte)
         {
+            //texte.ForceMeshUpdate();
             for (int i = 0; i < texte.textInfo.wordCount; i++)
             {
                 FaireTremblerMot(i, duree, force, texte);
@@ -217,6 +224,7 @@ namespace TMP_Animation
         /// <param name="texte">Référence au TexteMeshPro dont on va modifier un mot</param>
         public static void FaireTremblerMot(int indexMot, float duree, float force, TextMeshProUGUI texte)
         {
+            //texte.ForceMeshUpdate();
             TMP_WordInfo info = texte.textInfo.wordInfo[indexMot];
         
             for (int i = 0; i < info.characterCount; i++)
@@ -233,6 +241,7 @@ namespace TMP_Animation
         /// <param name="texte">Référence au TexteMeshPro dont on va modifier un caractère</param>
         public static void FaireTremblerCar(int indexCar, float duree, float force, TextMeshProUGUI texte)
         {
+            //texte.ForceMeshUpdate();
             int indexMesh = texte.textInfo.characterInfo[indexCar].materialReferenceIndex;
             int indexVertex = texte.textInfo.characterInfo[indexCar].vertexIndex;
             Vector3[] vertices = texte.textInfo.meshInfo[indexMesh].vertices;
@@ -241,6 +250,7 @@ namespace TMP_Animation
     
         private static IEnumerator TremblerCar(int indexVertex, Vector3[] vertices, float duree, float force, TextMeshProUGUI texte)
         {
+            //texte.ForceMeshUpdate();
             float tmps = 0;
             List<Vector3> positionDepart = new List<Vector3>(vertices);
             while (tmps <= duree)

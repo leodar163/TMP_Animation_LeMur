@@ -25,7 +25,7 @@ namespace TMP_Animation
                     CanvasScaler scaler = nvlOverlay.AddComponent<CanvasScaler>();
                     scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
                     scaler.referenceResolution = new Vector2(1920, 1080);
-                    scaler.matchWidthOrHeight = .5f;
+                    scaler.matchWidthOrHeight = 0;
 
                     nvlOverlay.AddComponent<GraphicRaycaster>();
                 }
@@ -43,7 +43,7 @@ namespace TMP_Animation
         // Update is called once per frame
         void Update()
         {
-        
+            
         }
 
         public static bool GenererTexteFB(string texte, Vector3 position, float tmpsAffichage,  out TextMeshProUGUI tmp, params OptionsTexteFB[] options)
@@ -114,7 +114,7 @@ namespace TMP_Animation
                         }
                         case Deplacement deplacement:
                         {
-                            Debug.DrawLine(posDepart,posDepart+(Vector3)deplacement.decalage);
+                            Debug.DrawLine(posDepart,posDepart+(Vector3)deplacement.decalage,Color.blue,0.1f);
                             texte.transform.position = Vector3.Lerp(posDepart, posDepart + (Vector3)deplacement.decalage, tmpsNorm);
                             break;
                         }
@@ -174,10 +174,10 @@ namespace TMP_Animation
             public float prcentDebutFondu; 
             public float prcentFinFondu; 
 
-            public Fondu(float prcentDebutFondu = 0, float _prcentFinFondu = 1, bool _fadeIn = true)
+            public Fondu(float _prcentDebutFondu = 0, float _prcentFinFondu = 1, bool _fadeIn = true)
             {
                 FadeIn = _fadeIn;
-                prcentDebutFondu = prcentDebutFondu;
+                prcentDebutFondu = _prcentDebutFondu;
                 prcentFinFondu = _prcentFinFondu;
             }
         }
